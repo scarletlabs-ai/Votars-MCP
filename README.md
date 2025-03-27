@@ -1,6 +1,7 @@
-
 ![Votars Logo](https://votars.ai/_next/static/media/logo.e7b6bff6.svg) 
 # Votars MCP 
+[![smithery badge](https://smithery.ai/badge/@scarletlabs-ai/votars-mcp)](https://smithery.ai/server/@scarletlabs-ai/votars-mcp)
+
 
 ## Overview
 
@@ -23,6 +24,15 @@ Additionally, Votars is an AI-powered platform that enables developers to integr
 
 ## Installation (Go MCP)
 
+### Installing via Smithery
+
+To install votars-mcp for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@scarletlabs-ai/votars-mcp):
+
+```bash
+npx -y @smithery/cli install @scarletlabs-ai/votars-mcp --client claude
+```
+
+### Manual Installation
 To install the Go version of Votars MCP from the GitHub repository, use:
 
 ```bash
@@ -99,4 +109,3 @@ Configuration file example (`mcp.config.json`):
 ## License
 
 MIT License
-

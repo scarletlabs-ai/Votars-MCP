@@ -1,0 +1,42 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required: []
+    properties:
+      transport:
+        type: string
+        default: stdio
+        description: Transport mode to use when starting the server. Either 'stdio' or
+          'sse'.
+      port:
+        type: string
+        default: "8080"
+        description: Port to listen on when using sse transport. Ignored in stdio mode.
+      apiKey:
+        type: string
+        default: ""
+        description: API key for authentication. Required for stdio mode. (Not used in
+          sse mode)
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => {
+      const transport = config.transport || 'stdio';
+      const args = [ '-t', transport ];
+      if(transport === 'sse') {
+        args.push('-p', config.port || '8080');
+      }
+      return {
+        command: './votars-mcp',
+        args,
+        env: transport === 'stdio' ? { VOTARS_API_KEY: config.apiKey } : {}
+      };
+    }
+  exampleConfig:
+    transport: stdio
+    apiKey: dummy-api-key
+    port: "8080"
