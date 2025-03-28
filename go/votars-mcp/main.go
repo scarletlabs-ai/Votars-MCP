@@ -8,7 +8,6 @@ import (
 	"github.com/scarletlabs-ai/Votars-MCP/go/votars-mcp/mcp"
 )
 
-// go:build votars-mcp
 func main() {
 	var (
 		transport, port string
